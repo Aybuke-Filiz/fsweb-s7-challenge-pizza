@@ -2,7 +2,7 @@ import { useState } from 'react'
 import "../App.css"
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { FormGroup, Input, Label } from 'reactstrap';
+import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import "./OrderPage.css";
 
@@ -17,6 +17,7 @@ function OrderPage() {
   const [notes, setNotes] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [toppingsPrice,setToppingsPrice]=useState(0);
   const basePrice = 85.50;
   const [errors, setErrors] = useState({
     name: '',
@@ -31,8 +32,7 @@ function OrderPage() {
     updateTotalPrice(newQuantity);
   };
 
-  const updateTotalPrice = (quantity) => {
-    const basePrice = 85.50; 
+  const updateTotalPrice = (quantity) => { 
     const toppingPrice = 5; 
     const sizePriceMap = {
       small: 85.50,
@@ -41,7 +41,8 @@ function OrderPage() {
     };
     const sizePrice = sizePriceMap[size] || 0;
     const toppingsPrice = toppings.length * toppingPrice;
-    const totalPrice = (basePrice + sizePrice + toppingsPrice) * quantity;
+    setToppingsPrice(toppingsPrice)
+    const totalPrice = (sizePrice + toppingsPrice) * quantity;
     setTotalPrice(totalPrice);
   };
   
@@ -196,7 +197,7 @@ function OrderPage() {
             </Input>
             {errors.thickness && <span className="error">{errors.thickness}</span>}
           </FormGroup>
-
+<FormGroup>
           <label>Ek Malzemeler:</label><br />
           <input type="checkbox" id="pepperoni" value="pepperoni" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Pepperoni
           <input type="checkbox" id="Sosis" value="Sosis" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sosis
@@ -211,6 +212,8 @@ function OrderPage() {
           <input type="checkbox" id="Biber" value="Biber" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Biber
           <input type="checkbox" id="Köz Biber" value="Köz Biber" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Köz Biber
           <input type="checkbox" id="Turşu" value="Turşu" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Turşu<br />
+          {errors.toppings && <span className="error">{errors.toppings}</span>}
+          </FormGroup>
 
           <FormGroup>
             <Label for="Adınız">Adınız</Label>
@@ -222,8 +225,9 @@ function OrderPage() {
               minLength={3}
               value={name}
               onChange={e => setName(e.target.value)}
+              //data-cy="name-input"//
             />
-            {errors.name && <span className="error">{errors.name}</span>}
+              {errors.name && <span className="error">{errors.name}</span>}
           </FormGroup>
 
           <FormGroup>
@@ -239,9 +243,11 @@ function OrderPage() {
           </FormGroup>
 
           <label htmlFor="quantity">Adet:</label>
-          <input type="number" id="quantity" value={quantity} onChange={handleQuantityChange} min="1" />
+          <input type="number" id="quantity" value={quantity} onChange={handleQuantityChange} min="1" /><br></br>
 
+          <label>Seçimler:{toppingsPrice}</label><br></br>
           <label>Toplam Fiyat: {totalPrice} TL</label>
+
 
           <button type="button" className="siparis" onClick={handleSubmit}>Sipariş Ver</button>
         </form>
