@@ -1,0 +1,30 @@
+body{
+    background-color: #CE2829;
+}
+button{
+    background-color: #FDC913;
+    border-radius: 25%;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    margin-top: 1.2rem;
+    text-align: center;
+    width: 15%;
+}
+img{
+    width: 50%;
+   flex-direction: column;
+   align-content: flex-end;
+    
+    
+}
+h1{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+h2{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.2rem;
+}

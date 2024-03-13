@@ -4,7 +4,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { FormGroup, Input, Label } from 'reactstrap';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-
+import "./OrderPage.css";
 
 
 function OrderPage() {
@@ -76,11 +76,16 @@ const history=useHistory();
 
   return (
     
-    <div>
+    <div class="card-container">
+      <header>
       <h1>Teknolojik Yemekler</h1>
+      </header>
+      <p>Anasayfa-Sipariş oluştur</p>
+      <div class="metin-container">
       <h2>Position Absolute Acı Pizza</h2>
-      <label> {basePrice} TL</label><br /><br />
-      <label>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, quis blanditiis vero dolores quibusdam perspiciatis quisquam amet. Numquam hic ab ducimus quam laudantium dolores perspiciatis quis asperiores eaque modi fugit ad vero quo, quasi placeat, aliquid quidem nulla! Maiores, quae nobis? Vero possimus consequuntur nihil natus voluptatem quod. Eos laudantium at ipsa consequuntur amet blanditiis, vel ea debitis dolorem iste! At quasi aperiam nesciunt iusto eius explicabo molestias cupiditate, animi nemo debitis molestiae eligendi dolore hic mollitia accusamus. Accusantium, tempora ut iste illum consectetur culpa dolores cum officia magnam at. Deleniti, excepturi voluptates? Eaque aliquid adipisci mollitia, quam cupiditate cum?</label>
+      <p class="tutar"> {basePrice} TL</p>
+      <p class="paragraf">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, quis blanditiis vero dolores quibusdam perspiciatis quisquam amet. Numquam hic ab ducimus quam laudantium dolores perspiciatis quis asperiores eaque modi fugit ad vero quo, quasi placeat, aliquid quidem nulla! Maiores, quae nobis? Vero possimus consequuntur nihil natus voluptatem quod. Eos laudantium at ipsa consequuntur amet blanditiis, vel ea debitis dolorem iste! At quasi aperiam nesciunt iusto eius explicabo molestias cupiditate, animi nemo debitis molestiae eligendi dolore hic mollitia accusamus. Accusantium, tempora ut iste illum consectetur culpa dolores cum officia magnam at. Deleniti, excepturi voluptates? Eaque aliquid adipisci mollitia, quam cupiditate cum?</p>
+      
       <form>
       <FormGroup tag="fieldset">
     <legend>
@@ -126,7 +131,6 @@ const history=useHistory();
       </Label>
 </FormGroup>
     </FormGroup>
-
         <FormGroup>
     <Label for="exampleSelect">
       Hamur Seç
@@ -135,7 +139,7 @@ const history=useHistory();
       id="exampleSelect"
       name="select"
       type="select"
-     //onchange yapılacak
+      onChange={e => setThickness(e.target.value)} 
     >
       <option>
         İnce
@@ -149,21 +153,21 @@ const history=useHistory();
     </Input>
   </FormGroup>
 
-        <label>Ek Malzemeler:</label><br />
-        <input type="checkbox" id="pepperoni" value="pepperoni" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Pepperoni<br />
-        <input type="checkbox" id="Sosis" value="Sosis" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sosis<br />
-        <input type="checkbox" id="Kanada Jambonu" value="Kanada Jambonu" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Kanada Jambonu<br />
-        <input type="checkbox" id="Tavuk Izgara" value="Tavuk Izgara" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Tavuk Izgara<br />
-        <input type="checkbox" id="Soğan" value="Soğan" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Soğan<br /><br />
-        <input type="checkbox" id="Domates" value="Domates" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Domates<br /><br />
-        <input type="checkbox" id="Mısır" value="Mısır" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Mısır<br /><br />
-        <input type="checkbox" id="Sucuk" value="Sucuk" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sucuk<br /><br />
-        <input type="checkbox" id="Jalepeno" value="Jalepeno" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Jalepeno<br /><br />
-        <input type="checkbox" id="Sarımsak" value="Sarımsak" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sarımsak<br /><br />
-        <input type="checkbox" id="Biber" value="Biber" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Biber<br /><br />
-        <input type="checkbox" id="Sucuk" value="Sucuk" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sucuk<br /><br />
-        <input type="checkbox" id="Köz Biber" value="Köz Biber" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Köz Biber<br /><br />
-        <input type="checkbox" id="Turşu" value="Turşu" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Turşu<br /><br />
+        <label>Ek Malzemeler:</label><br></br>
+        <input type="checkbox" id="pepperoni" value="pepperoni" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Pepperoni
+        <input type="checkbox" id="Sosis" value="Sosis" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sosis
+        <input type="checkbox" id="Kanada Jambonu" value="Kanada Jambonu" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Kanada Jambonu
+        <input type="checkbox" id="Tavuk Izgara" value="Tavuk Izgara" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Tavuk Izgara<br></br>
+        <input type="checkbox" id="Soğan" value="Soğan" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Soğan
+        <input type="checkbox" id="Domates" value="Domates" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Domates
+        <input type="checkbox" id="Mısır" value="Mısır" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Mısır
+        <input type="checkbox" id="Sucuk" value="Sucuk" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sucuk
+        <input type="checkbox" id="Jalepeno" value="Jalepeno" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Jalepeno
+        <input type="checkbox" id="Sarımsak" value="Sarımsak" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sarımsak<br></br>
+        <input type="checkbox" id="Biber" value="Biber" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Biber
+        <input type="checkbox" id="Sucuk" value="Sucuk" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sucuk
+        <input type="checkbox" id="Köz Biber" value="Köz Biber" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Köz Biber
+        <input type="checkbox" id="Turşu" value="Turşu" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Turşu<br></br>
         <FormGroup>
     <Label for="Adınız">
       Adınız
@@ -195,12 +199,13 @@ const history=useHistory();
 
        
         <label htmlFor="quantity">Adet:</label>
-        <input type="number" id="quantity" value={quantity} onChange={handleQuantityChange} min="1" /><br /><br />
+        <input type="number" id="quantity" value={quantity} onChange={handleQuantityChange} min="1" />
 
-        <label>Toplam Fiyat: {totalPrice} TL</label><br /><br />
+        <label>Toplam Fiyat: {totalPrice} TL</label>
 
-        <button type="button" onClick={handleSubmit}>Sipariş Ver</button>
+        <button type="button" class="siparis"onClick={handleSubmit}>Sipariş Ver</button>
       </form>
+    </div>
     </div>
   );
 }

@@ -1,0 +1,36 @@
+
+header{
+    background-color: #CE2829;
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.metin-container{
+    background-color: white;
+    color:black;
+}
+.metin-container h2{
+    display: flex;
+    justify-content: flex-start;
+}
+form{
+    background-color: white;
+    color: black;
+}
+.metin-container{
+    margin:0 auto;
+    width: 50%;
+
+}
+.tutar{
+    font-weight: bold;
+}
+.siparis{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#FDC913;
+    border-radius: 50%;
+}

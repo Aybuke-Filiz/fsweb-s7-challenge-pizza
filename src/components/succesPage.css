@@ -1,0 +1,20 @@
+ body{
+    background-color: #CE2829;
+    color: white;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+.baslık{
+    margin-bottom: auto;
+}
+.altmetin{
+    margin: 0;
+    margin-top: auto;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
