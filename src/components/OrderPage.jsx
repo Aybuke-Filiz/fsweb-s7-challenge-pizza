@@ -76,10 +76,10 @@ function OrderPage() {
     }
 
    
-    if (toppings.length < 4 || toppings.length > 10) {
+    if ( toppings.length > 10) {
       setErrors(prevErrors => ({
         ...prevErrors,
-        toppings: "En az 4 en fazla 10 adet seçim yapabilirsiniz."
+        toppings: "En fazla 10 adet seçim yapabilirsiniz."
       }));
       valid = false;
     } else {
@@ -163,6 +163,8 @@ function OrderPage() {
             <legend>Boyut Seç</legend>
             <FormGroup check>
               <Input
+              id="size"
+              data-cy="size"
                 name="size"
                 type="radio"
                 value="small"
@@ -174,6 +176,7 @@ function OrderPage() {
             <FormGroup check>
               <Input
                 name="size"
+                data-cy="size"
                 type="radio"
                 value="medium"
                 checked={size === 'medium'}
@@ -197,10 +200,11 @@ function OrderPage() {
           <FormGroup>
             <Label for="exampleSelect">Hamur Seç</Label>
             <Input
-              id="exampleSelect"
+              id="thickess"
               name="select"
               type="select"
               onChange={e => setThickness(e.target.value)} 
+              data-cy="thickness"
             >
               <option>İnce</option>
               <option>Orta</option>
@@ -212,16 +216,17 @@ function OrderPage() {
   <div classsName="all-check">
   <div>
           <label>Ek Malzemeler:</label><br />
-          <input type="checkbox" id="pepperoni" value="pepperoni" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Pepperoni
-          <input type="checkbox" id="Sosis" value="Sosis" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sosis
+          <input type="checkbox" id="pepperoni" value="pepperoni" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} data-cy="Pepperoni"/> Pepperoni
+          
+          <input type="checkbox" id="Sosis" value="Sosis" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} data-cy="Sosis"/> Sosis
           <input type="checkbox" id="Kanada Jambonu" value="Kanada Jambonu" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Kanada Jambonu
           <input type="checkbox" id="Tavuk Izgara" value="Tavuk Izgara" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Tavuk Izgara<br />
           </div>
           <div>
           <input type="checkbox" id="Soğan" value="Soğan" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Soğan
           <input type="checkbox" id="Domates" value="Domates" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Domates
-          <input type="checkbox" id="Mısır" value="Mısır" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Mısır
-          <input type="checkbox" id="Sucuk" value="Sucuk" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Sucuk
+          <input type="checkbox" id="Mısır" value="Mısır" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)}data-cy="Mısır" /> Mısır
+          <input type="checkbox" id="Sucuk" value="Sucuk" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)}data-cy="Sucuk" /> Sucuk
           </div>
           <div>
           <input type="checkbox" id="Jalepeno" value="Jalepeno" onChange={e => setToppings(prevToppings => e.target.checked ? [...prevToppings, e.target.value] : prevToppings)} /> Jalepeno
@@ -244,7 +249,7 @@ function OrderPage() {
               minLength={3}
               value={name}
               onChange={e => setName(e.target.value)}
-              //data-cy="name-input"//
+              data-cy="name"
             />
               {errors.name && <span className="error">{errors.name}</span>}
           </FormGroup>
@@ -252,12 +257,13 @@ function OrderPage() {
           <FormGroup>
             <Label for="notes">Sipariş Notu</Label>
             <Input
-              id="notes"
+              id="textarea"
               name="notes"
               placeholder="Siparişine eklemek istediğin bir not var mı?"
               type="textarea"
               value={notes}
               onChange={e => setNotes(e.target.value)} 
+              data-cy="textarea"
             />
           </FormGroup>
 
