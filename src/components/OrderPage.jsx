@@ -2,7 +2,7 @@ import { useState } from 'react'
 import "../App.css"
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
+import {  FormGroup, Input, Label } from 'reactstrap';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import "./OrderPage.css";
 import logo from "../Assets/mile1-assets/logo.svg"

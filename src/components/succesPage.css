@@ -2,19 +2,20 @@
     background-color: #CE2829;
     color: white;
     height: 100vh;
+    display: grid;
+    place-items: center;
+    
     
 }
+
 .alt-metin{
     display: flex;
     justify-content: center; 
     align-items: center;
     flex-direction: column;
-   
-}
-.logo{
-    padding: 5rem 0 ;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-   
+    font-family: "Roboto Condensed";
+    flex-wrap: wrap;
+    font-size: 3rem;
+    
+
 }
