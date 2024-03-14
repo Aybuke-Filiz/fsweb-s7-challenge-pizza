@@ -25,7 +25,7 @@ function OrderPage() {
   const [size, setSize] = useState('');
   const [thickness, setThickness] = useState('');
   const [notes, setNotes] = useState('');
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [toppingsPrice,setToppingsPrice]=useState(0);
   const basePrice = 85.50;
@@ -124,7 +124,8 @@ function OrderPage() {
         thickness:thickness,
         size: size,
         notes: notes,
-        quantity: quantity
+        quantity: quantity,
+        totalPrice:totalPrice,
       };
   
       axios.post('https://reqres.in/api/pizza', orderData)
@@ -135,7 +136,6 @@ function OrderPage() {
           console.log('Boyut Seç:', response.data.size);
           console.log('Hamur Seç:', response.data.thickness);
           console.log('Notlar:', response.data.notes);
-          console.log('Sipariş Tarihi:', response.data.createdAt);
           console.log('Adet:', response.data.quantity);
           console.log('Toplam Fiyat:', response.data.totalPrice);
           history.push("/SuccesPage");
@@ -268,7 +268,7 @@ function OrderPage() {
           </FormGroup>
 
           <label htmlFor="quantity"></label>
-          <input type="number" id="quantity" value={quantity} onChange={handleQuantityChange} min="1" /><br></br>
+          <input type="number" id="quantity" value={quantity} onChange={handleQuantityChange} min="0" /><br></br>
 
           <label>Seçimler:{toppingsPrice}</label><br></br>
           <label>Toplam Fiyat: {totalPrice} TL</label><br></br>
